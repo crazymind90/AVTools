@@ -1,0 +1,9 @@
+Package: com.crazymind90.avtools
+Name: AVTools
+Depends: firmware (>= 13.0),mobilesubstrate,com.rpetrich.rocketbootstrap
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: @CrazyMind90
+Author: @CrazyMind90
+Section: Tweaks
