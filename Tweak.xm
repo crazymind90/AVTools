@@ -170,7 +170,7 @@ rocketbootstrap_distributedmessagingcenter_apply(c);
 %new 
 -(void) SeekButton_Tapped:(UIButton *)Sender {
 
-  [CMManagerMini InitTextFieldAlertWithTitle:@"Set seek time" Message:nil Buttons:@[@"Set"] CancelButtonTitle:@"Cancel" handler:^(NSString * ButtonTitle, NSString * Text, UITextField * TextField) {
+  [CMManagerMini InitTextFieldAlertWithTitle:@"Set skip time" Message:nil Buttons:@[@"Set"] CancelButtonTitle:@"Cancel" handler:^(NSString * ButtonTitle, NSString * Text, UITextField * TextField) {
 
     TextField.keyboardType = UIKeyboardTypeNumberPad;
     TextField.text = (NSString *)[[NSMutableDictionary dictionaryWithContentsOfFile:MainPlist] objectForKey:@"SeekTime"];
