@@ -222,7 +222,7 @@ rocketbootstrap_distributedmessagingcenter_apply(c);
 
     AVButton *avbutton = Sender;
     isSeekingAllowed = YES;
-    if ([avbutton.imageName isEqual:@"FullScreen_SkipForward15"])
+    if ([avbutton.imageName.lowercaseString containsString:@"forward"])
     [self _seekByTimeInterval:SeekTime toleranceBefore:0.5 toleranceAfter:0.5];
     else 
     [self _seekByTimeInterval:-SeekTime toleranceBefore:0.5 toleranceAfter:0.5];
