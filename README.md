@@ -3,9 +3,9 @@ iOS tweak for av player
 
 # Features
 - Rotation button
-- Custom skip instead of 15 seconds
+- Custom skip sec instead of 15 seconds
 
-# Supports iOS 13 and 14+
+# Supports iOS 13 , 14 , 15 and 16
 
 ### ScreenShot
 
