@@ -2,10 +2,8 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <AppSupport/CPDistributedMessagingCenter.h>
-#import <rocketbootstrap/rocketbootstrap.h>
 #import "AVTools.h"
-
+#import "CrossOverIPC.h"
 
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #pragma GCC diagnostic ignored "-Wprotocol"
@@ -20,7 +18,6 @@
 
 
 
-CPDistributedMessagingCenter *_messagingCenter;
 BOOL DidStartServer = NO;
 BOOL DidInitButton = NO;
 BOOL isSeekingAllowed = NO;
@@ -35,10 +32,14 @@ BOOL isSeekingAllowed = NO;
 %end 
 
 
+
 void SendNotificationMessage(NSString *Action) {
-CPDistributedMessagingCenter *c = [CPDistributedMessagingCenter centerNamed:@"com.crazymind90.AVTools"];
-rocketbootstrap_distributedmessagingcenter_apply(c);
-[c sendMessageName:@"AVTools" userInfo:@{@"Action" : Action}];
+// CPDistributedMessagingCenter *c = [CPDistributedMessagingCenter centerNamed:@"com.crazymind90.AVTools"];
+// rocketbootstrap_distributedmessagingcenter_apply(c);
+// [c sendMessageName:@"AVTools" userInfo:@{@"Action" : Action}];
+    #define _serviceName @"com.crazymind90.AVTools"
+    CrossOverIPC *crossOver = [objc_getClass("CrossOverIPC") centerNamed:_serviceName type:SERVICE_TYPE_SENDER];
+    [crossOver sendMessageName:@"AVTools" userInfo:@{@"Action" : Action}];
 }
 
  
@@ -51,10 +52,10 @@ rocketbootstrap_distributedmessagingcenter_apply(c);
   [@{} writeToFile:MainPlist atomically:YES];
 
   if (!DidStartServer) {
-  _messagingCenter = [CPDistributedMessagingCenter centerNamed:@"com.crazymind90.AVTools"];
-  rocketbootstrap_distributedmessagingcenter_apply(_messagingCenter);
-  [_messagingCenter runServerOnCurrentThread];
-  [_messagingCenter registerForMessageName:@"AVTools" target:self selector:@selector(NotificationAction:userInfo:)];
+  #define _serviceName @"com.crazymind90.AVTools"
+  CrossOverIPC *crossOver = [objc_getClass("CrossOverIPC") centerNamed:_serviceName type:SERVICE_TYPE_LISTENER];
+  [crossOver registerForMessageName:@"AVTools" target:self selector:@selector(NotificationAction:userInfo:)];
+
   DidStartServer = YES;
   }
 

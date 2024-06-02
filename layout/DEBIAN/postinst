@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "Signing ..."
+ldid -s /var/jb/Library/MobileSubstrate/DynamicLibraries/AVTools.dylib /var/jb/Library/MobileSubstrate/DynamicLibraries/AVTools.dylib
+echo "Done!"
+exit 0

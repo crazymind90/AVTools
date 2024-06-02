@@ -140,13 +140,12 @@ UIButton *Button = [UIButton buttonWithType:UIButtonTypeCustom];
 }
  
 
-
-#define MainPlist @"/var/mobile/Library/Application Support/AVTools.plist"
+#define MainPlist @"/var/jb/var/mobile/Library/Preferences/AVTools.plist"
 
 void WriteToPlist(BOOL isLock) {
 
   NSMutableDictionary *MainDictionary = [NSMutableDictionary dictionaryWithContentsOfFile:MainPlist];
-  isLock ? [MainDictionary setValue:@"1" forKey:@"isLock"] : [MainDictionary setValue:@"2"forKey:@"isLock"];
+  isLock ? [MainDictionary setValue:@"1" forKey:@"isLock"] : [MainDictionary setValue:@"2" forKey:@"isLock"];
 
   if (!MainDictionary[@"SeekTime"])
   [MainDictionary setValue:@"15" forKey:@"SeekTime"];
